@@ -83,6 +83,7 @@ body {
 
 .seat.selected {
   background-color: #5ed31a;
+  box-shadow: 0 0 10px #5ed31a;
 }
 
 .seat.occupied {
