@@ -9,7 +9,10 @@ const seatPrice = +filmSelect.value;
 
 //UPDATE SEAT SELECTION COUNT AND TOTAL PRICE
 function updateSelectedCount() {
-  const seatsSelected = document.querySelectorAll('.row .seat .selected');
+  const seatsSelected = document.querySelectorAll('.row .seat.selected');
+  const countseatsSelected = seatsSelected.length;
+  count.innerText = countseatsSelected;
+
 }
 
 container.addEventListener('click', (e) => {
