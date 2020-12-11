@@ -23,7 +23,6 @@ function setFilmData(filmIndex, filmPrice) {
   localStorage.setItem('selectedFilmPrice', filmPrice);
 }
 
-
 //UPDATE SEAT SELECTION COUNT AND TOTAL PRICE
 function updateSelectedCount() {
   const seatsSelected = document.querySelectorAll('.row .seat.selected');
@@ -54,34 +53,32 @@ function populateApp() {
 
   if (selectedFilmIndex !== null) {
     filmSelect.selectedIndex = selectedFilmIndex;
-    screen.style.backgroundImage = `url(${posters[selectedFilmIndex]})`;
+    changePoster(selectedFilmIndex);
   }
 }
 
 //HANDLE FILM SELECTION
 filmSelect.addEventListener('change', (e) => {
   seatPrice = +e.target.value;
-
-
   const chosenFilm = e.target.selectedIndex;
-  screen.style.backgroundImage = `url(${posters[chosenFilm]})`;
-
-
-  setFilmData(e.target.selectedIndex, e.target.value);
+  changePoster(chosenFilm)
+  setFilmData(chosenFilm, e.target.value);
   updateSelectedCount();
 })
 
 //HANDLE SEAT CLICKS
 container.addEventListener('click', (e) => {
-
   const classList = e.target.classList;
-
   if (classList.contains('seat') && !classList.contains('occupied')) {
     classList.toggle('selected');
     updateSelectedCount();
   }
-
 });
+
+//CHANGES FILM POSTER
+function changePoster(posterIndex) {
+  screen.style.backgroundImage = `url(${posters[posterIndex]})`;
+}
 
 //INIT COUNT/TOTAL
 updateSelectedCount()
