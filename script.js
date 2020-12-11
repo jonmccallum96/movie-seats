@@ -5,6 +5,13 @@ const total = document.getElementById('total');
 const filmSelect = document.getElementById('movie');
 const screen = document.querySelector('.screen');
 
+const posters = [
+  'https://images-na.ssl-images-amazon.com/images/I/51WAC7SFK9L._AC_SY400_.jpg',
+  'https://1.bp.blogspot.com/-X0aR4mhW_04/Vvqc4_ajuHI/AAAAAAAAiws/USZdZTPPrhEgV_dOvnoK7z6x_9x7fW5dg/s1600/american%2Bwerewolf%2Bin%2Blondon%2B1981%2Buk%2Bquad%2Bposter.jpg',
+  'https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Starship_Troopers_-_movie_poster.jpg/220px-Starship_Troopers_-_movie_poster.jpg',
+  'https://resizing.flixster.com/bXadsjlcLBeT2UYzjzsByvPWBI4=/206x305/v2/https://flxt.tmsimg.com/assets/p31044_p_v10_af.jpg'
+]
+
 populateApp();
 
 let seatPrice = +filmSelect.value;
@@ -47,12 +54,19 @@ function populateApp() {
 
   if (selectedFilmIndex !== null) {
     filmSelect.selectedIndex = selectedFilmIndex;
+    screen.style.backgroundImage = `url(${posters[selectedFilmIndex]})`;
   }
 }
 
 //HANDLE FILM SELECTION
 filmSelect.addEventListener('change', (e) => {
   seatPrice = +e.target.value;
+
+
+  const chosenFilm = e.target.selectedIndex;
+  screen.style.backgroundImage = `url(${posters[chosenFilm]})`;
+
+
   setFilmData(e.target.selectedIndex, e.target.value);
   updateSelectedCount();
 })
