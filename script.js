@@ -1,3 +1,5 @@
+const body = document.querySelector('body');
+const background = document.querySelector('.background');
 const container = document.querySelector('.container');
 const seats = document.querySelectorAll('.row .seat:not(.occupied)');
 const count = document.getElementById('count');
@@ -26,7 +28,6 @@ function setFilmData(filmIndex, filmPrice) {
 //UPDATE SEAT SELECTION COUNT AND TOTAL PRICE
 function updateSelectedCount() {
   const seatsSelected = document.querySelectorAll('.row .seat.selected');
-
   const seatsIndex = [...seatsSelected].map(seat => [...seats].indexOf(seat));
 
   localStorage.setItem('seatsSelected', JSON.stringify(seatsIndex));
@@ -78,6 +79,7 @@ container.addEventListener('click', (e) => {
 //CHANGES FILM POSTER
 function changePoster(posterIndex) {
   screen.style.backgroundImage = `url(${posters[posterIndex]})`;
+  body.style.backgroundImage = `url(${posters[posterIndex]})`;
 }
 
 //INIT COUNT/TOTAL
