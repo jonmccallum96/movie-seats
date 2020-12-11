@@ -3,6 +3,9 @@ const seats = document.querySelectorAll('.row .seat:not(.occupied)');
 const count = document.getElementById('count');
 const total = document.getElementById('total');
 const filmSelect = document.getElementById('movie');
+const screen = document.querySelector('.screen');
+
+populateApp();
 
 let seatPrice = +filmSelect.value;
 
@@ -20,13 +23,31 @@ function updateSelectedCount() {
 
   const seatsIndex = [...seatsSelected].map(seat => [...seats].indexOf(seat));
 
-  localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
+  localStorage.setItem('seatsSelected', JSON.stringify(seatsIndex));
 
   const countseatsSelected = seatsSelected.length;
   const totalPrice = countseatsSelected * seatPrice;
   count.innerText = countseatsSelected;
   total.innerText = totalPrice;
 
+}
+
+//POPULATE APP FROM LOCALSTORAGE
+function populateApp() {
+  const seatsSelected = JSON.parse(localStorage.getItem('seatsSelected'));
+
+  if (seatsSelected !== null && seatsSelected.length > 0) {
+    seats.forEach((seat, index) => {
+      if (seatsSelected.indexOf(index) > -1) {
+        seat.classList.add('selected');
+      }
+    })
+  }
+  const selectedFilmIndex = localStorage.getItem('selectedFilmIndex');
+
+  if (selectedFilmIndex !== null) {
+    filmSelect.selectedIndex = selectedFilmIndex;
+  }
 }
 
 //HANDLE FILM SELECTION
@@ -47,3 +68,6 @@ container.addEventListener('click', (e) => {
   }
 
 });
+
+//INIT COUNT/TOTAL
+updateSelectedCount()
