@@ -27,6 +27,46 @@ body {
   background-color: rgba(36, 35, 51, .95);
 }
 
+.links {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  padding: 15px;
+  background-color: rgba(50, 50, 50, 0.8);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.links a {
+  color: white;
+}
+
+.links i {
+  transition: 0.3s;
+}
+
+.links i:hover {
+  transform: scale(1.1);
+}
+
+.links a:visited {
+  color: white;
+}
+
+.logo {
+  height: 30px;
+  margin-right: 20px;
+  transition: 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+
 .container {
   perspective: 1000px;
   margin-bottom: 30px;
