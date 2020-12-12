@@ -10,4 +10,4 @@ In this example, once the user has selected some seats, the chosen seats are pla
 
 ### How would I improve on this?
 
-If I was to improve this project, I would add different seats for different theatres
+If I was to improve this project, I would add a connection to a database which would allow the user to submit their selection, this database would then return the seats as occupied depending on the movie selection.
